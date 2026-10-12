@@ -1,0 +1,27 @@
+# Déploiement du service WhatsApp LASTIC sur Render (plan gratuit).
+# Les valeurs secrètes (jeton, clé API) se saisissent dans le tableau de bord Render,
+# jamais dans ce fichier.
+services:
+  - type: web
+    name: lastic-whatsapp
+    runtime: node
+    rootDir: whatsapp-service
+    plan: free
+    buildCommand: "echo rien à installer"
+    startCommand: "node server.js"
+    healthCheckPath: /
+    envVars:
+      - key: GRAPH_VERSION
+        value: v23.0
+      - key: WHATSAPP_PHONE_NUMBER_ID
+        value: "1380556278472362"
+      - key: TEMPLATE_PAYMENT
+        value: confirmation_paiement
+      - key: TEMPLATE_LATE
+        value: relance_retard
+      - key: TEMPLATE_LANG
+        value: fr
+      - key: WHATSAPP_TOKEN
+        sync: false
+      - key: SERVICE_API_KEY
+        sync: false
