@@ -5,7 +5,6 @@ services:
   - type: web
     name: lastic-whatsapp
     runtime: node
-    rootDir: whatsapp-service
     plan: free
     buildCommand: "echo rien à installer"
     startCommand: "node server.js"
